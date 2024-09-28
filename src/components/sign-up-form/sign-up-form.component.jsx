@@ -18,8 +18,6 @@ const SignUpForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { displayName, email, password, confirmPassword } = formFields;
 
-    console.log(formFields);
-
     //reset the formfields after login
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
@@ -29,7 +27,7 @@ const SignUpForm = () => {
         event.preventDefault();
 
         //check if passwords match
-        if(password != confirmPassword) {
+        if(password !== confirmPassword) {
             alert("passwords do not match");
             return;
         }
@@ -42,7 +40,7 @@ const SignUpForm = () => {
             resetFormFields();
             
         } catch(error) {
-            if(error.code == 'auth/email-already-in-use') {
+            if(error.code === 'auth/email-already-in-use') {
                 alert('Cannot create user, email already in use');
             }
             else {
